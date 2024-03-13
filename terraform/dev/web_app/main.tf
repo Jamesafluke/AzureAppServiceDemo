@@ -21,23 +21,30 @@ provider "azurerm" {
   tenant_id       = var.tenant_id
 }
 
+locals {
+  tags = {
+    terraform = "true"
+    env = "dev"    
+  }
+}
+
 data "terraform_remote_state" "rg" {
   backend = "azurerm"
 
-    config = {
-        resource_group_name  = "rg-tfstate"
-        storage_account_name = "satfstate109234"
-        container_name       = "tfstate"
-        key                  = "AzureAppServiceDemo/dev/rg/terraform.tfstate"
-    }
+  config = {
+    resource_group_name  = "rg-tfstate"
+    storage_account_name = "satfstate109234"
+    container_name       = "tfstate"
+    key                  = "AzureAppServiceDemo/dev/rg/terraform.tfstate"
+  }
 }
 
 module "app_service_plan" {
-  source = "github.com/Jamesafluke/AzureAppServiceDemo.git//AzureAppServiceDemo/terraform/modules/modules/app_service_plan/"
+  source = "github.com/Jamesafluke/AzureAppServiceDemo//terraform/modules/modules/app_service_plan/"
+
 
   app_service_plan_name = asp1
-  resource_group_name = data.rg.output.resource_group_name
-  location = data.rg.output.location
-
-
+  resource_group_name   = data.rg.output.resource_group_name
+  location              = data.rg.output.location
+  tags = local.tags
 }

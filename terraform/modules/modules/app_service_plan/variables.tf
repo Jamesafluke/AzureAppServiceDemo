@@ -19,3 +19,10 @@ variable "sku_name" {
   type = string
   default = "P1v2"
 }
+
+variable "tags" {
+  type = map
+  default = {
+    terraform = "true"
+  }
+}

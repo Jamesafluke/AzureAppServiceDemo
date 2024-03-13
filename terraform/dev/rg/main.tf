@@ -21,13 +21,17 @@ provider "azurerm" {
   tenant_id       = var.tenant_id
 }
 
+locals {
+  tags = {
+    terraform = "true"
+    env = "dev"    
+  }
+}
+
 module "rg" {
   source = "github.com/Jamesafluke/AzureAppServiceDemo//terraform/modules/modules/rg/"
 
   location = "westus2"
   rg_name  = "rg_AzureAppServiceDemo_dev"
-  tags{
-    terraform = "true"
-    env = "dev"
-  }
+  tags = local.tags
 }
