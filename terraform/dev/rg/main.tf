@@ -22,8 +22,7 @@ provider "azurerm" {
 }
 
 module "rg" {
-  source = "github.com/Jamesafluke/AzureAppServiceDemo//AzureAppServiceDemo/terraform/modules/modules/rg/"
-  # source = "github.com/foo/modules//services/webserver-cluster?ref=v0.0.1"
+  source = "github.com/Jamesafluke/AzureAppServiceDemo//terraform/modules/modules/rg/"
 
   location = "westus2"
   rg_name  = "rg_AzureAppServiceDemo_dev"
