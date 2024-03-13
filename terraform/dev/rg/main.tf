@@ -23,6 +23,8 @@ provider "azurerm" {
 
 module "rg" {
   source = "github.com/Jamesafluke/AzureAppServiceDemo.git//AzureAppServiceDemo/terraform/modules/modules/rg/"
+  source = "github.com/Jamesafluke/TerraformCram.git//FilestructureTest/modules/modules/rg?ref=v1.01.0"
+
   location = "westus2"
   rg_name  = "rg_AzureAppServiceDemo_dev"
   tags{
