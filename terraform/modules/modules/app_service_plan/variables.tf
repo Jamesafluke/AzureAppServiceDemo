@@ -11,17 +11,17 @@ variable "location" {
 }
 
 variable "os_type" {
-  type = string
+  type    = string
   default = "Linux"
 }
 
 variable "sku_name" {
-  type = string
+  type    = string
   default = "P1v2"
 }
 
 variable "tags" {
-  type = map
+  type = map(any)
   default = {
     terraform = "true"
   }

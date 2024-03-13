@@ -24,7 +24,7 @@ provider "azurerm" {
 locals {
   tags = {
     terraform = "true"
-    env = "dev"    
+    env       = "dev"
   }
 }
 
@@ -33,5 +33,5 @@ module "rg" {
 
   location = "westus2"
   rg_name  = "rg_AzureAppServiceDemo_dev"
-  tags = local.tags
+  tags     = local.tags
 }

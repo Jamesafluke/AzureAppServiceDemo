@@ -24,7 +24,7 @@ provider "azurerm" {
 locals {
   tags = {
     terraform = "true"
-    env = "dev"    
+    env       = "dev"
   }
 }
 
@@ -42,9 +42,8 @@ data "terraform_remote_state" "rg" {
 module "app_service_plan" {
   source = "github.com/Jamesafluke/AzureAppServiceDemo//terraform/modules/modules/app_service_plan/"
 
-
-  app_service_plan_name = asp1
-  resource_group_name   = data.rg.output.resource_group_name
-  location              = data.rg.output.location
-  tags = local.tags
+  app_service_plan_name = "asp1"
+  resource_group_name   = data.terraform_remote_state.rg.outputs.resource_group_name
+  location              = data.terraform_remote_state.rg.outputs.location
+  tags                  = local.tags
 }

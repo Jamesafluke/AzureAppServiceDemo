@@ -1,13 +1,13 @@
 variable "location" {
-  type    = string
+  type = string
 }
 
 variable "rg_name" {
-  type    = string
+  type = string
 }
 
 variable "tags" {
-  type = map
+  type = map(any)
   default = {
     "terraform" = "true"
   }
