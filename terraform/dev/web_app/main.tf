@@ -45,5 +45,16 @@ module "app_service_plan" {
   app_service_plan_name = "asp1"
   resource_group_name   = data.terraform_remote_state.rg.outputs.resource_group_name
   location              = data.terraform_remote_state.rg.outputs.location
+  # tags                  = local.tags
+}
+
+module "web_app" {
+  source = "github.com/Jamesafluke/AzureAppServiceDemo//terraform/modules/modules/web_app/"
+
+  app_name = "webapp1"
+  resource_group_name   = data.terraform_remote_state.rg.outputs.resource_group_name
+  location              = data.terraform_remote_state.rg.outputs.location
+  service_plan_id = module.app_service_plan.service_plan_id
   tags                  = local.tags
 }
+

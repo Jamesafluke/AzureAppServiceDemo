@@ -9,6 +9,6 @@ variable "rg_name" {
 variable "tags" {
   type = map(any)
   default = {
-    "terraform" = "true"
+    terraform = "true"
   }
 }

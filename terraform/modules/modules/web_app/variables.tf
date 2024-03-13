@@ -13,3 +13,10 @@ variable "location" {
 variable "service_plan_id" {
   type = string
 }
+
+variable "tags" {
+  type = map(any)
+  default = {
+    terraform = "true"
+  }
+}
